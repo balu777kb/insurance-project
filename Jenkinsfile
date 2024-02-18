@@ -6,7 +6,7 @@ pipeline {
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/balu777kb/health-care.git'
+            git 'https://github.com/balu777kb/insurance-project.git'
             }
         }
         stage('Build') {
