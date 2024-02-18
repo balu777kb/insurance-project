@@ -1,5 +1,8 @@
 pipeline {
-    agent any 
+    agent any
+    environment {
+    DOCKERHUB_CREDENTIALS = credentials('docker')
+    }
     stages { 
         stage('SCM Checkout') {
             steps{
@@ -21,27 +24,6 @@ pipeline {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
-        }
-        stage('login to dockerhub') {
-            steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('push image') {
-            steps{
-                sh 'docker push balu777kb/insurance:latest'
-               }
-          }
-   
- stage('Deploy') {
-            steps{
-                   sh 'docker run -itd --name insuranceproject -p 8095:8095 balu777kb/insurance:latest'
-                 }
-          }   
-}
-       post {
-            always {
-               sh 'docker logout'
         }
     }
 }
