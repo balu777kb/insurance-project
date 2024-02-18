@@ -11,5 +11,12 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage('Build docker image') {
+            steps {  
+                sh 'docker build -t insure .'
+                sh 'docker tag insure:latest balu777kb/insurance:latest'
+            }
+        }
+        
      }
 }
