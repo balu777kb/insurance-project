@@ -17,7 +17,7 @@ pipeline {
         stage('Build docker image') {
             steps {  
                 sh 'docker build -t insure .'
-                sh 'docker tag insure:latest balu777kb/insurance:latest'
+                sh 'docker tag insure:latest balu777kb/insurance12:latest'
             }
         }
         stage('login to dockerhub') {
@@ -27,13 +27,13 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push balu777kb/insurance:latest'
+                sh 'docker push balu777kb/insurance12:latest'
                }
           }
    
         stage('Deploy') {
              steps{
-                   sh 'docker run -itd --name insuranceproject -p 8095:8095 balu777kb/insurance:latest'
+                   sh 'docker run -itd --name insuranceproject46 -p 8096:8096 balu777kb/insurance12:latest'
              }
         }   
 }
