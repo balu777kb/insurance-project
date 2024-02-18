@@ -34,7 +34,7 @@ pipeline {
    
  stage('Deploy') {
             steps{
-                   sh 'docker run -itd --name insuranceproject -p 8090:8090 balu777kb/demo1:latest'
+                   sh 'docker run -itd --name insuranceproject -p 8094:8094 balu777kb/demo1:latest'
                  }
           }   
 }
